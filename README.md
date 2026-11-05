@@ -9,7 +9,7 @@ Salon management system in two separate apps:
 
 ## Run it
 
-Requires Node 22.5 or newer (for `node:sqlite`, no native build needed).
+Requires Node 22.13 or newer (for `node:sqlite`, no native build needed).
 
 ```bash
 cd backend && npm install && npm start      # http://localhost:4000, seeds demo data on first run

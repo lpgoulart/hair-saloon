@@ -17,8 +17,9 @@ services:
     healthCheckPath: /api/health
     autoDeploy: true
     envVars:
+      # node:sqlite works without a flag from Node 22.13; 22.20 is the version the project is tested on.
       - key: NODE_VERSION
-        value: 22.12.0
+        value: 22.20.0
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ORIGIN
