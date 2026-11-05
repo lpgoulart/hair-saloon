@@ -1,0 +1,25 @@
+# Render Blueprint for the Onda API (backend/).
+# In Render: New → Blueprint → pick this repository → Apply. It creates one free web service.
+#
+# Free-plan notes:
+# - The service sleeps after ~15 minutes idle; the first request then takes up to a minute.
+# - The disk is not persistent: the SQLite file is wiped on every deploy or restart, and the
+#   server reseeds the demo data on start. Fine for a demo; a real salon needs a paid disk
+#   (DB_PATH on a mounted disk) or a hosted database.
+services:
+  - type: web
+    name: onda-salon-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://lpgoulart.github.io

@@ -24,6 +24,22 @@ Reset the demo data at any time with `npm run seed` in `backend/`.
 - `marina@onda.studio` – stylist (also `theo@`, `ayo@`, `lucia@onda.studio`)
 - `admin@onda.studio` – studio manager
 
+## Live deployment
+
+| Part | Where | How it deploys |
+| --- | --- | --- |
+| Website | GitHub Pages: https://lpgoulart.github.io/hair-saloon/ | `.github/workflows/deploy-pages.yml` on every push to `main` that touches `frontend/` (or run it by hand from the Actions tab) |
+| API | Render free web service (expected URL https://onda-salon-api.onrender.com) | `render.yaml` blueprint; Render redeploys on every push to `main` |
+
+**One-time setup**
+1. GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Then re-run the "Deploy frontend to GitHub Pages" workflow from the Actions tab.
+2. Render: **New → Blueprint**, pick this repository, **Apply**. It creates `onda-salon-api` with a generated `JWT_SECRET` and CORS limited to `https://lpgoulart.github.io`.
+3. If Render gives the service a different address, set it in GitHub: **Settings → Secrets and variables → Actions → Variables → New variable** `API_URL` = `https://<your-service>.onrender.com/api`, then re-run the workflow.
+
+**Free-plan behaviour.** The API sleeps after ~15 minutes idle, so the first request then takes up to a minute. Its disk is wiped on every deploy or restart, and the demo data is reseeded on start, so bookings made on the live site don't last. For real use, give the service a persistent disk (point `DB_PATH` at it) or move to a hosted database.
+
+API docs live: https://onda-salon-api.onrender.com/api/docs
+
 ## API documentation
 
 Interactive Swagger UI at **http://localhost:4000/api/docs** (also through the frontend at http://localhost:5173/api/docs). It documents every endpoint: who may call it, parameters, request and response bodies with examples, and every error. To try the protected ones, run `POST /auth/login` on the page, press **Authorize** and paste the token.

@@ -8,7 +8,8 @@ import './styles/app.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* basename follows Vite's base: "/" locally, "/hair-saloon/" on GitHub Pages */}
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
       <AuthProvider>
         <App />
       </AuthProvider>

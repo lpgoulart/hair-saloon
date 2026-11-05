@@ -22,7 +22,7 @@ export async function api(path, { method = 'GET', body, query } = {}) {
   try {
     res = await fetch(`${BASE}${path}${qs}`, { method, headers, body: body !== undefined ? JSON.stringify(body) : undefined });
   } catch {
-    throw new ApiError('Cannot reach the studio server. Is the backend running?', 0);
+    throw new ApiError('Cannot reach the studio server. If it was asleep it can take up to a minute to wake up; please try again.', 0);
   }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {

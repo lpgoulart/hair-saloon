@@ -7,7 +7,7 @@ function AuthFrame({ title, sub, children }) {
   return (
     <div className="auth">
       <div className="auth-photo" aria-hidden="true">
-        <img src="/assets/salon-de-coiffure-le-temps-d-une-2.jpg" alt="" />
+        <img src={`${import.meta.env.BASE_URL}assets/salon-de-coiffure-le-temps-d-une-2.jpg`} alt="" />
       </div>
       <div className="auth-side">
         <Link to="/" className="auth-mark display">Onda</Link>

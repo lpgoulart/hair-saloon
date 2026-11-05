@@ -5,15 +5,17 @@ import { useAuth, homeFor } from '../lib/auth.jsx';
 import { fmtDuration, money, relativeDay } from '../lib/format.js';
 import '../styles/landing.css';
 
+// Public files live under the site's base path (/ locally, /hair-saloon/ on GitHub Pages).
+const BASE = import.meta.env.BASE_URL;
 const IMG = {
-  room: '/assets/salon-de-coiffure-le-temps-d-une.jpg',
-  chairs: '/assets/salon-de-coiffure-le-temps-d-une-2.jpg',
-  dyes: '/assets/shelve-with-various-hair-colours-hair-dyes.jpg',
-  tools: '/assets/leather-belt-bag-with-various-tools-of.jpg',
-  braiding: '/assets/a-hairdresser-at-work-in-ivory-coast.jpg',
-  wave1: '/assets/portrait-of-a-woman-showing-hairstyle-done.jpg',
-  wave2: '/assets/portrait-of-a-woman-showing-hairstyle-done-2.jpg',
-  print: '/assets/woman-arranging-her-hair.jpg',
+  room: `${BASE}assets/salon-de-coiffure-le-temps-d-une.jpg`,
+  chairs: `${BASE}assets/salon-de-coiffure-le-temps-d-une-2.jpg`,
+  dyes: `${BASE}assets/shelve-with-various-hair-colours-hair-dyes.jpg`,
+  tools: `${BASE}assets/leather-belt-bag-with-various-tools-of.jpg`,
+  braiding: `${BASE}assets/a-hairdresser-at-work-in-ivory-coast.jpg`,
+  wave1: `${BASE}assets/portrait-of-a-woman-showing-hairstyle-done.jpg`,
+  wave2: `${BASE}assets/portrait-of-a-woman-showing-hairstyle-done-2.jpg`,
+  print: `${BASE}assets/woman-arranging-her-hair.jpg`,
 };
 
 const FALLBACK_SERVICES = [
