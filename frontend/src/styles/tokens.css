@@ -1,0 +1,76 @@
+/* Onda tokens — "Olive on bone", Big Shoulders / Public Sans */
+:root {
+  --bg: #ecebe7;
+  --surface: #e1dfd9;
+  --surface-2: #d6d3cb;
+  --ink: #38450f;
+  --muted: #5d683a;
+  --accent: #38450f;
+  --accent-ink: #ecebe7;
+  --field-1: #38450f;
+  --field-1-ink: #ecebe7;
+  --paper: #f6f5f2;          /* raised surface inside app screens */
+  --danger: #8a2d1c;
+  --warn: #7a5a10;
+  --ok: #38450f;
+
+  --display: 'Big Shoulders', 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --text: 'Public Sans', system-ui, sans-serif;
+
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.2rem + 5vw, 5.5rem);
+
+  --margin: clamp(16px, 2.2vw, 32px);
+  --radius: 0px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 600ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--step-body)/1.5 var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+::selection { background: var(--ink); color: var(--bg); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.display {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.88;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  min-height: 48px; padding: 0 24px;
+  background: var(--accent); color: var(--accent-ink);
+  border: 0; border-radius: var(--radius);
+  font: 600 1rem/1 var(--text); text-decoration: none; cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 160ms;
+}
+.btn:hover { background: #2a340a; }
+.btn:active { transform: scale(0.97); }
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.btn.ghost { background: var(--surface); color: var(--ink); }
+.btn.ghost:hover { background: var(--surface-2); }
+.btn.danger { background: var(--danger); color: #fff; }
+.btn.small { min-height: 36px; padding: 0 14px; font-size: 0.9375rem; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+}
